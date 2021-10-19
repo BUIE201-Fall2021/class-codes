@@ -11,11 +11,14 @@ def fibonacci(n):
         prev = current
     return current
 
+def fibonacci_recursive(n):
+    if n <= 2:
+        return 1
+    return fibonacci_recursive(n-2) + fibonacci_recursive(n-1)
 
-start = time.time()
 fib3 = fibonacci(3)
-end = time.time()
-print (end - start)
+fibrecursive5 = fibonacci_recursive(5)
+
 
 # for i in range(1, 1010):
 #     start = time.time()
