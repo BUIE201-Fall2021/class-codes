@@ -12,22 +12,23 @@ def fibonacci(n):
     return current
 
 def fibonacci_recursive(n):
+    # base condition
     if n <= 2:
         return 1
+    # recursion
     return fibonacci_recursive(n-2) + fibonacci_recursive(n-1)
 
 fib3 = fibonacci(3)
 fibrecursive5 = fibonacci_recursive(5)
 
+for i in range(1, 40):
+    start = time.time()
+    fibonacci(i)
+    end = time.time()
+    print("Iterative calculation of " + str(i) + " took " + str(end - start))
 
-# for i in range(1, 1010):
-#     start = time.time()
-#     factorial(i)
-#     end = time.time()
-#     print("Iterative calculation of " + str(i) + " took " + str(end - start))
-
-#     start = time.time()
-#     factorial_recursive(i)
-#     end = time.time()
-#     print("Recursive calculation of " + str(i) + " took " + str(end - start))
+    start = time.time()
+    fibonacci_recursive(i)
+    end = time.time()
+    print("Recursive calculation of " + str(i) + " took " + str(end - start))
 
