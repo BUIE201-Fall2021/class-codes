@@ -4,6 +4,17 @@ def factorial(n):
         result *=  i
     return result
 
+def factorial_recursive(n):
+    # base condition
+    if n <= 1:
+        return 1
+    # recursive step / recursion
+    n1 = factorial_recursive(n-1)
+    return n * n1
+
+recursive4 = factorial_recursive(4)
+print(recursive4)
+
 fact4 = factorial(5)
 print(fact4)
 
