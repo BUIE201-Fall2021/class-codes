@@ -1,3 +1,5 @@
+import time
+
 def factorial(n):
     result = 1
     for i in range(1, n+1):
@@ -12,7 +14,23 @@ def factorial_recursive(n):
     n1 = factorial_recursive(n-1)
     return n * n1
 
+start = time.time()
 recursive4 = factorial_recursive(4)
+end = time.time()
+print (end - start)
+
+# beware of the maximum recursion depth!
+for i in range(1, 1010):
+    start = time.time()
+    factorial(i)
+    end = time.time()
+    print("Iterative calculation of " + str(i) + " took " + str(end - start))
+
+    start = time.time()
+    factorial_recursive(i)
+    end = time.time()
+    print("Recursive calculation of " + str(i) + " took " + str(end - start))
+
 print(recursive4)
 
 fact4 = factorial(5)
