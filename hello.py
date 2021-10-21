@@ -2,10 +2,11 @@
 class Date:
     
     # initalizer / constructor
-    def __init__(self):
+    def __init__(self, Year, Month, Day):
         self._Year = 1970
         self._Month = 1
         self._Day = 1
+        self.set_date(Year, Month, Day)
     
     def set_date(self, Year, Month, Day):
         if Year > 0 and Month > 0 and Month <= 12 and Day > 0 and Day <= 31:
@@ -16,7 +17,7 @@ class Date:
             print("Invalid date!")
 
 # instances/objects of Date class
-today = Date()
+today = Date(2021, 10, 21)
 # accessing/modifying class member fields from outside of the
 # class violates data encapsulation/data hiding principle
 # today.Year = 2021
@@ -30,7 +31,7 @@ today.set_date(2021, 10, 21)
 today.set_date(2021, -10, 21)
 
 
-tomorrow = Date()
+tomorrow = Date(2021, 10, 22)
 # tomorrow.Year = 2021
 # tomorrow.Month = 10
 # tomorrow.Day = 22
