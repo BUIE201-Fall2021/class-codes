@@ -1,6 +1,5 @@
 # Definition of the class
 class Date:
-    
     # initalizer / constructor
     def __init__(self, Year, Month, Day):
         self._Year = 1970
@@ -18,30 +17,31 @@ class Date:
     
     def print(self):
         print("The date is: {}/{}/{}".format(self._Day, self._Month, self._Year))
- #       print("The date is: " + str(self._Day) + "/" + str(self._Month) + "/" + str(self._Year))
 
-# instances/objects of Date class
-today = Date(2021, 10, 21)
-# accessing/modifying class member fields from outside of the
-# class violates data encapsulation/data hiding principle
-# today.Year = 2021
-# today.Month = -10
-# today.Day = 21
-# today.set_date(2021, 10, 21)
+def foo(theDate):
+    print("Before modification")
+    theDate.print()
+    print(id(theDate))
+    print("After modification")
+    theDate.set_date(1981, 1, 1)
+    theDate.print()
+
+today = Date(2021, 10, 26)
 today.print()
+print(type(today))
+print(id(today))
 
-# equivalent to:
-# Date.set_date(today, 2021, 10, 21)
+today2 = today
+print(type(today2))
+print(id(today2))
 
-# today.set_date(2021, -10, 21)
-
-
-tomorrow = Date(2021, 10, 22)
-# tomorrow.Year = 2021
-# tomorrow.Month = 10
-# tomorrow.Day = 22
-# tomorrow.set_date(2021, 10, 22)
-
+tomorrow = Date(2021, 10, 27)
 tomorrow.print()
+print(type(tomorrow))
+print(id(tomorrow))
 
-i = 3
+print("Before function call:")
+tomorrow.print()
+foo(tomorrow)
+print("After function call:")
+tomorrow.print()
