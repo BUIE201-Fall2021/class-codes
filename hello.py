@@ -18,67 +18,25 @@ class Date:
     def print(self):
         print("The date is: {}/{}/{}".format(self._Day, self._Month, self._Year))
 
-today = Date(2021, 10, 26)
-today.print()
-print(type(today))
-print(id(today))
+class Movie:
+    def __init__(self, name, release_year, release_month, release_day) -> None:
+        self._Name = name
+        # This is possible, but not good
+        #self._ReleaseYear = release_year
+        #self._ReleaseMonth = release_month
+        #self._ReleaseDay = release_day
+        self._ReleaseDate = Date(release_year, release_month, release_day)
+    
+    def print(self):
+        # Violation of data encapsulation principle: _Year should not be accessed from outside of Date class
+        # print("Movie " + self._Name + " was released on year " + str(self._ReleaseDate._Year))
+        print("Movie " + self._Name + " was released on")
+        self._ReleaseDate.print()
 
-today2 = today
-print(type(today2))
-print(id(today2))
+m = Movie("The Matrix Resurrections", 2021, 12, 15)
+m.print()
 
-today2.set_date(1980, 1, 1)
+m2 = Movie("The Dune", 2021, 9, 15)
+m2.print()
 
-today.print()
-
-
-# Everything  is an object in Python
-i = 5
-print(type(i))
-print(id(i))
-
-j = i
-print(type(j))
-print(id(j))
-
-# Copy-on-assignment creates a new int object for i
-# so that the value of j is not modified 
-# int -> immutable
-# https://towardsdatascience.com/https-towardsdatascience-com-python-basics-mutable-vs-immutable-objects-829a0cb1530a
-i += 5
-
-print(type(i))
-print(id(i))
-print(i)
-
-print(type(j))
-print(id(j))
-print(j)
-
-f = 4.5
-g = 3.0
-
-print("f: " + str(f.is_integer()))
-print("g: " + str(g.is_integer()))
-
-s = "IE 201"
-print(s.lower())
-
-s_lower = s.lower()
-
-print (type(s))
-print (id(s))
-print (s)
-
-print (type(s_lower))
-print (id(s_lower))
-print (s_lower)
-
-weather_temp = 16
-fmt = "Hello, today the weather is {} degrees".format(weather_temp)
-print(fmt)
-
-student_ids = ["5435", "34535", "32424", "65435"]
-concat = ",".join(student_ids)
-print(concat)
-
+i = 4
