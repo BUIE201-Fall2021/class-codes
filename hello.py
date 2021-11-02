@@ -29,12 +29,24 @@ class Movie:
     def print(self):
         print("Movie " + self._Name + " was released on")
         self._ReleaseDate.print()
+        print("Movie " + self._Name + " has " + str(len(self._Viewers)) + " viewers:")
+        for viewer in self._Viewers:
+            viewer.print()
 
     def add_viewer(self, viewer):
         self._Viewers.append(viewer)
+        viewer.add_movie(self)
 class Viewer:
     def __init__(self, name) -> None:
         self._Name = name
+        self._Movies = []
+    
+    def add_movie(self, movie):
+        self._Movies.append(movie)
+
+    def print(self):
+        print("Viewer Name: " + self._Name + " has viewed " + str(len(self._Movies)) + " movies")
+
 
 matrix = Movie("The Matrix Resurrections", 2021, 12, 15)
 matrix.print()
@@ -49,18 +61,24 @@ print("caner's refcount: " + str(sys.getrefcount(caner)))
 print("tamer's refcount: " + str(sys.getrefcount(tamer)))
 
 matrix.add_viewer(caner)
+matrix.print()
 
 print("caner's refcount: " + str(sys.getrefcount(caner)))
 print("tamer's refcount: " + str(sys.getrefcount(tamer)))
 
 dune.add_viewer(tamer)
+dune.print()
 
 print("caner's refcount: " + str(sys.getrefcount(caner)))
 print("tamer's refcount: " + str(sys.getrefcount(tamer)))
 
 dune.add_viewer(caner)
+dune.print()
 
 print("caner's refcount: " + str(sys.getrefcount(caner)))
 print("tamer's refcount: " + str(sys.getrefcount(tamer)))
+
+caner.print()
+tamer.print()
 
 i = 5
