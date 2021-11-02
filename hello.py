@@ -1,3 +1,5 @@
+import sys
+
 # Definition of the class
 class Date:
     # initalizer / constructor
@@ -21,22 +23,34 @@ class Date:
 class Movie:
     def __init__(self, name, release_year, release_month, release_day) -> None:
         self._Name = name
-        # This is possible, but not good
-        #self._ReleaseYear = release_year
-        #self._ReleaseMonth = release_month
-        #self._ReleaseDay = release_day
         self._ReleaseDate = Date(release_year, release_month, release_day)
     
     def print(self):
-        # Violation of data encapsulation principle: _Year should not be accessed from outside of Date class
-        # print("Movie " + self._Name + " was released on year " + str(self._ReleaseDate._Year))
         print("Movie " + self._Name + " was released on")
         self._ReleaseDate.print()
 
+# print("temp refcount: " + str(sys.getrefcount([])))
+
 m = Movie("The Matrix Resurrections", 2021, 12, 15)
 m.print()
+
+print("m: " + str(id(m)))
+print("m refcount: " + str(sys.getrefcount(m)))
+
+matrix = m
+
+print("matrix: " + str(id(matrix)))
+print("m refcount: " + str(sys.getrefcount(m)))
+print("matrix refcount: " + str(sys.getrefcount(matrix)))
+
+matrix = None
+
+print("matrix: " + str(id(matrix)))
+print("m refcount: " + str(sys.getrefcount(m)))
+print("matrix refcount: " + str(sys.getrefcount(matrix)))
 
 m2 = Movie("The Dune", 2021, 9, 15)
 m2.print()
 
 i = 4
+print("i refcount: " + str(sys.getrefcount(i)))
