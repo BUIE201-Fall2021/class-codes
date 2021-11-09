@@ -19,8 +19,19 @@ class Square:
                 print("*", end="")
             print("")
 
+class NewSquare(Rectangle):
+    def __init__(self, length) -> None:
+        self._Width = length
+        self._Height = length
+
+print("Rectangle:")
 rect = Rectangle(5, 8)
 rect.print()
 
+print("Square:")
 sqr = Square(4)
 sqr.print()
+
+print("NewSquare:")
+nsqr = NewSquare(6)
+nsqr.print()
