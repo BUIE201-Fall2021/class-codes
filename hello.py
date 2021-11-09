@@ -8,6 +8,10 @@ class Date:
         self._Month = 1
         self._Day = 1
         self.set_date(Year, Month, Day)
+
+    # destructor
+    def __del__(self):
+        print("Date object is deleted")
     
     def set_date(self, Year, Month, Day):
         if Year > 0 and Month > 0 and Month <= 12 and Day > 0 and Day <= 31:
@@ -25,7 +29,10 @@ class Movie:
         self._Name = name
         self._ReleaseDate = Date(release_year, release_month, release_day)
         self._Viewers = []
-    
+
+    def __del__(self):
+        print("Movie object is deleted")
+
     def print(self):
         print("Movie " + self._Name + " was released on")
         self._ReleaseDate.print()
@@ -48,37 +55,32 @@ class Viewer:
         print("Viewer Name: " + self._Name + " has viewed " + str(len(self._Movies)) + " movies")
 
 
+def foo():
+    local_dune = Movie("Local Dune", 2021, 9, 15)
+    local_dune.print()
+
+foo()
+
 matrix = Movie("The Matrix Resurrections", 2021, 12, 15)
 matrix.print()
 
-caner = Viewer("Caner")
-tamer = Viewer("Tamer")
 
-dune = Movie("The Dune", 2021, 9, 15)
-dune.print()
 
-print("caner's refcount: " + str(sys.getrefcount(caner)))
-print("tamer's refcount: " + str(sys.getrefcount(tamer)))
+# caner = Viewer("Caner")
+# tamer = Viewer("Tamer")
 
-matrix.add_viewer(caner)
-matrix.print()
+# dune = Movie("The Dune", 2021, 9, 15)
+# dune.print()
 
-print("caner's refcount: " + str(sys.getrefcount(caner)))
-print("tamer's refcount: " + str(sys.getrefcount(tamer)))
+# matrix.add_viewer(caner)
+# matrix.print()
 
-dune.add_viewer(tamer)
-dune.print()
+# dune.add_viewer(tamer)
+# dune.print()
 
-print("caner's refcount: " + str(sys.getrefcount(caner)))
-print("tamer's refcount: " + str(sys.getrefcount(tamer)))
+# dune.add_viewer(caner)
+# dune.print()
 
-dune.add_viewer(caner)
-dune.print()
+# caner.print()
+# tamer.print()
 
-print("caner's refcount: " + str(sys.getrefcount(caner)))
-print("tamer's refcount: " + str(sys.getrefcount(tamer)))
-
-caner.print()
-tamer.print()
-
-i = 5
