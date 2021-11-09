@@ -21,8 +21,7 @@ class Square:
 
 class NewSquare(Rectangle):
     def __init__(self, length) -> None:
-        self._Width = length
-        self._Height = length
+        super().__init__(length, length)
 
 print("Rectangle:")
 rect = Rectangle(5, 8)
