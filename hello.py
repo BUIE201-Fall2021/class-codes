@@ -23,6 +23,9 @@ class NewSquare(Rectangle):
     def __init__(self, length) -> None:
         super().__init__(length, length)
 
+    def my_additional_function(self):
+        print("This function belongs to NewSquare")
+
 print("Rectangle:")
 rect = Rectangle(5, 8)
 rect.print()
@@ -34,3 +37,7 @@ sqr.print()
 print("NewSquare:")
 nsqr = NewSquare(6)
 nsqr.print()
+nsqr.my_additional_function()
+
+# my_additional_function does not exist at Rectangle
+# rect.my_additional_function()
