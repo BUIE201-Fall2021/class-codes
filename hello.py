@@ -1,79 +1,52 @@
-class Rectangle:
-    def __init__(self, width, height) -> None:
-        self._Width = width
-        self._Height = height
+import sys
 
-    def print(self):
-        for i in range(self._Height):
-            for j in range(self._Width):
-                print("*", end="")
-            print("")
-    
-    def overridden_function(self):
-        print("This is Rectangle's overridden_function")
+b = True
+print(type(b))
 
-class Square:
-    def __init__(self, length) -> None:
-        self._Length = length
+i = 42
+print(type(i))
 
-    def print(self):
-        for i in range(self._Length):
-            for j in range(self._Length):
-                print("*", end="")
-            print("")
+# bool is an int in Python
 
-class NewSquare(Rectangle):
-    def __init__(self, length) -> None:
-        super().__init__(length, length)
+print(issubclass(bool, int)) 
+print(issubclass(int, bool))
 
-    def my_additional_function(self):
-        print("This function belongs to NewSquare")
+p = 3.41
+print(type(p))
 
-    # function override mechanism
-    def overridden_function(self):
-        super().overridden_function()
-        print("This is NewSquare's overridden_function")
+# int is not a special kind of float in Python
+print(issubclass(int, float)) 
 
-print("Rectangle:")
-rect = Rectangle(5, 8)
-rect.print()
+# example of inexact floating point arithmetic in Python
+# https://docs.python.org/3/tutorial/floatingpoint.html
+print (0.1 + 0.1 + 0.1 == 0.3)
 
-print("Square:")
-sqr = Square(4)
-sqr.print()
+print(issubclass(int, object))
+print(issubclass(float, object))
+print(issubclass(str, object))
 
-print("NewSquare:")
-nsqr = NewSquare(6)
-nsqr.print()
-nsqr.my_additional_function()
-nsqr.overridden_function()
+l = [4, 7.8, "string"]
+print(l)
+print(type(l))
+for i in l:
+    print(type(i))
 
-# my_additional_function does not exist at Rectangle
-# rect.my_additional_function()
-rect.overridden_function()
+print(type(print))
 
-class Animal:
-    def talk(self):
+def foo():
+    print ("Hello from foo")
+
+print(type(foo))
+class MyClass:
+    def __init__(self) -> None:
         pass
 
-class Dog(Animal):
-    def talk(self):
-        print("Hav")
+c = MyClass()
+print(type(c))
+print(type(MyClass))
 
-class Cat(Animal):
-    def talk(self):
-        print("Miyav")
+int_list = [4, 5, 9]
 
-class Bird(Animal):
-    def talk(self):
-        print("Cik")
-
-my_dog = Dog()
-my_cat = Cat()
-my_bird = Bird()
-
-# Polymorphism
-my_pets = [my_dog, my_cat, my_bird]
-for pet in my_pets:
-    pet.talk()
+print (type(int_list))
+print (type(int_list[0]))
 
