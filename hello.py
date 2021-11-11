@@ -45,8 +45,54 @@ c = MyClass()
 print(type(c))
 print(type(MyClass))
 
+# representation of an integer vector
 int_list = [4, 5, 9]
 
 print (type(int_list))
 print (type(int_list[0]))
 
+# matrix representation
+row1 = [4, 5, 9]
+row2 = [3, 6, 8]
+
+matrix = [row1, row2]
+
+print (type(matrix))
+print (type(matrix[0]))
+print (type(matrix[0][0]))
+
+n_rows = 2
+n_cols = 3
+
+m = []
+for i in range(n_rows):
+    m.append([])
+    for j in range(n_cols):
+        m[i].append(j)
+
+def print_matrix(matrix):
+    for row in matrix:
+        for column in row:
+            print (column, end="")
+        print ("")
+
+print("Original matrix")
+print_matrix(m)
+
+def transpose(matrix):
+    n_rows = len(matrix)
+    n_cols = len(matrix[0])
+
+    transposed = []
+    for i in range(n_cols):
+        transposed.append([])
+        for j in range(n_rows):
+            transposed[i].append(matrix[j][i])
+    
+    return transposed
+
+t = transpose(m)
+print("Transposed")
+print_matrix(t)
+
+pause = 4
