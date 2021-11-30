@@ -1,6 +1,6 @@
 # print
 # size
-
+# find
 class ListNode:
     def __init__(self, value):
         self._value = value
@@ -11,12 +11,21 @@ class ListNode:
         if self._next:
             self._next.print_node()
     
+    # O(n)
     def size_recursive(self):
         size = 1
         if self._next:
             size += self._next.size_recursive()
         return size
-
+    
+    # O(n)
+    def find_recursive(self, value):
+        if self._value == value:
+            return True
+        elif self._next:
+            return self._next.find_recursive(value)
+        else:
+            return False
 class LinkedList:
     def __init__(self):
         self._root = None
@@ -26,6 +35,7 @@ class LinkedList:
         new_node._next = self._root
         self._root = new_node
 
+    # O(n)
     def print_list(self):
         print("[", end="")
         if self._root:
@@ -38,6 +48,14 @@ class LinkedList:
             return self._root.size_recursive()
         else:
             return 0
+    
+    # O(n)
+    def find(self, value):
+        if self._root:
+            return self._root.find_recursive(value)
+        else:
+            return False
+
 
 
 
@@ -55,5 +73,11 @@ m.insert_first(1)
 m.print_list()
 
 sz = m.size()
+
+find1 = m.find(6)
+print(find1)
+
+find2 = m.find(-6)
+print(find2)
 
 i = 4
