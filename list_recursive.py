@@ -10,7 +10,12 @@ class ListNode:
         print(self._value, end="")
         if self._next:
             self._next.print_node()
-    
+
+    def print_node_reverse(self):
+        if self._next:
+            self._next.print_node_reverse()
+        print(self._value, end="")
+
     # O(n)
     def size_recursive(self):
         size = 1
@@ -41,7 +46,13 @@ class LinkedList:
         if self._root:
             self._root.print_node()
         print("]")
-    
+
+    def print_list_reverse(self):
+        print("[", end="")
+        if self._root:
+            self._root.print_node_reverse()
+        print("]")
+
     # O(n)
     def size(self):
         if self._root:
@@ -71,6 +82,7 @@ m.print_list()
 
 m.insert_first(1)
 m.print_list()
+m.print_list_reverse()
 
 sz = m.size()
 
