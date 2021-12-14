@@ -26,6 +26,21 @@ class TreeNode:
             size_right = self._right.size_recursive()
         
         return 1 + size_right + size_left
+    
+    def find_recursive(self, value):
+        if value == self._value:
+            return True
+        elif value < self._value:
+            if self._left:
+                return self._left.find_recursive(value)
+            else:
+                return False
+        else: # value > self._value
+            if self._right:
+                return self._right.find_recursive(value)
+            else:
+                return False
+
 
 class Tree:
     def __init__(self) -> None:
@@ -44,6 +59,12 @@ class Tree:
             return self._root.size_recursive()
         else:
             return 0
+    
+    def find(self, value):
+        if self._root:
+            return self._root.find_recursive(value)
+        else:
+            return False
 
 m = Tree()
 print (m.size())
@@ -60,3 +81,9 @@ m.insert(25)
 m.insert(40)
 
 print (m.size())
+
+found12 = m.find(12)
+print (found12)
+
+found25 = m.find(25)
+print (found25)
