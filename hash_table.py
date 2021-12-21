@@ -24,7 +24,24 @@ class HashTable:
             self._array[index] = []
         self._array[index].append(value)
 
+    def find(self, value):
+        hash_value = hash(value)
+        index = hash_value % self._bucket_size
+        if self._array[index] == None:
+            return False
+        else:
+            l = self._array[index]
+            for v in l:
+                if v == value:
+                    return True
+            return False
+#            return value in l
+
+
 h = HashTable()
 h.insert("IE 201")
 h.insert("IE 203")
 h.insert("IE 515")
+
+print(h.find("IE 201"))
+print(h.find("IE 613"))
