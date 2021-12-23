@@ -1,3 +1,4 @@
+# O(n^2)
 def bubble_sort(l):
     print(l)
     while True:
@@ -12,3 +13,10 @@ def bubble_sort(l):
 
 l = [3, 10, 5, 2, -1, 15]
 bubble_sort(l)
+
+inverse_sorted = [15, 10, 5, 3, 2, -1]
+bubble_sort(inverse_sorted)
+
+# best sorting algorithms work in O(n log(n)) time
+# quicksort, mergesort, heapsort
+# timsort
